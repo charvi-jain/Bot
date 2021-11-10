@@ -1,0 +1,73 @@
+public class Bot extends JFrame{
+	private JTextArea Chatarea=new JTextArea();
+	private JTextField chatbox=new JTextField();
+	public Bot() {
+		JFrame frame =new JFrame();
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setLayout(null);
+		frame.setSize(600,600);
+		frame.setTitle("ChatBot");
+		frame.add(Chatarea);
+		frame.add(chatbox);
+		
+		//FOR TEXT AREA
+		
+		Chatarea.setSize(575, 400);
+		Chatarea.setLocation(2,2);
+		
+		//FOR TEXTFIELD
+		
+		chatbox.setSize(575,30);
+		chatbox.setLocation(2,500);
+		
+		chatbox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String gtext=chatbox.getText().toLowerCase();
+				Chatarea.append("YOU ->"+gtext+"\n");
+				chatbox.setText("");
+				if(gtext.contains("hi")) {
+					bot("Hey");
+				}else if(gtext.contains("low")) {
+					bot("Don't worry ,stay motivated and medidate daily.");
+					
+				}else if(gtext.contains("emergency")) {
+					bot("What type of emergency?");
+					
+				}else if(gtext.contains("ambulance")) {
+					bot("call 9011 free line number for ambulance");
+					
+				}else if(gtext.contains("oxygen")) {
+					bot("Dont worry call 9011 nearer hospital to get oxygen beds");
+					
+				}else if(gtext.contains("thank")) {
+					bot("Your Welcome! Stay safe ,stay healthy!");
+					
+				}else {
+					int rand=(int)(Math.random()*3+1);
+					if(rand==1) {
+						bot("I dont understand you");
+					}else if(rand==2) {
+						bot("I dont understand you dear");
+					}else if(rand==1) {
+						bot("Please come again!!");
+					}
+					
+				}
+				
+				
+			}
+			
+		});
+		
+	}
+	private void bot(String s) {
+		Chatarea.append("BOT->"+s+"\n");
+	}
+public static void main(String args[]) {
+	new Bot();
+}
+}
